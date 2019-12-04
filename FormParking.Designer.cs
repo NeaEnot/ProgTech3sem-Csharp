@@ -1,4 +1,4 @@
-﻿namespace Lab3
+﻿namespace Lab4
 {
     partial class FormParking
     {
@@ -25,10 +25,11 @@
             this.buttonSetTractor = new System.Windows.Forms.Button();
             this.buttonSetExcavatorTractor = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.pictureBoxTakeTractor = new System.Windows.Forms.PictureBox();
             this.buttonTakeTractor = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelPosition = new System.Windows.Forms.Label();
-            this.pictureBoxTakeTractor = new System.Windows.Forms.PictureBox();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTractor)).BeginInit();
@@ -44,7 +45,7 @@
             // 
             // buttonSetTractor
             // 
-            this.buttonSetTractor.Location = new System.Drawing.Point(1337, 12);
+            this.buttonSetTractor.Location = new System.Drawing.Point(1353, 313);
             this.buttonSetTractor.Name = "buttonSetTractor";
             this.buttonSetTractor.Size = new System.Drawing.Size(133, 45);
             this.buttonSetTractor.TabIndex = 1;
@@ -54,7 +55,7 @@
             // 
             // buttonSetExcavatorTractor
             // 
-            this.buttonSetExcavatorTractor.Location = new System.Drawing.Point(1342, 81);
+            this.buttonSetExcavatorTractor.Location = new System.Drawing.Point(1353, 375);
             this.buttonSetExcavatorTractor.Name = "buttonSetExcavatorTractor";
             this.buttonSetExcavatorTractor.Size = new System.Drawing.Size(129, 57);
             this.buttonSetExcavatorTractor.TabIndex = 2;
@@ -68,12 +69,20 @@
             this.groupBox.Controls.Add(this.buttonTakeTractor);
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.labelPosition);
-            this.groupBox.Location = new System.Drawing.Point(1351, 263);
+            this.groupBox.Location = new System.Drawing.Point(1353, 500);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(152, 265);
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Take Tractor";
+            // 
+            // pictureBoxTakeTractor
+            // 
+            this.pictureBoxTakeTractor.Location = new System.Drawing.Point(10, 137);
+            this.pictureBoxTakeTractor.Name = "pictureBoxTakeTractor";
+            this.pictureBoxTakeTractor.Size = new System.Drawing.Size(133, 117);
+            this.pictureBoxTakeTractor.TabIndex = 3;
+            this.pictureBoxTakeTractor.TabStop = false;
             // 
             // buttonTakeTractor
             // 
@@ -103,19 +112,22 @@
             this.labelPosition.TabIndex = 0;
             this.labelPosition.Text = "Position:";
             // 
-            // pictureBoxTakeTractor
+            // listBoxLevels
             // 
-            this.pictureBoxTakeTractor.Location = new System.Drawing.Point(10, 137);
-            this.pictureBoxTakeTractor.Name = "pictureBoxTakeTractor";
-            this.pictureBoxTakeTractor.Size = new System.Drawing.Size(133, 117);
-            this.pictureBoxTakeTractor.TabIndex = 3;
-            this.pictureBoxTakeTractor.TabStop = false;
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 20;
+            this.listBoxLevels.Location = new System.Drawing.Point(1353, 13);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(120, 244);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1536, 798);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonSetExcavatorTractor);
             this.Controls.Add(this.buttonSetTractor);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonTakeTractor;
         private System.Windows.Forms.PictureBox pictureBoxTakeTractor;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
