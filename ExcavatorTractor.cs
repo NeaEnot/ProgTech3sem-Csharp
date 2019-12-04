@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4
+namespace Lab
 {
     public class ExcavatorTractor:Tractor
     {
@@ -114,6 +114,11 @@ namespace Lab4
             if (BackTube) {
                 g.FillRectangle(brMain, _startPosX + 16, _startPosY + 10, 5, 15);
             }
+        }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }

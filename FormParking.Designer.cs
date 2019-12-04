@@ -1,4 +1,4 @@
-﻿namespace Lab4
+﻿namespace Lab
 {
     partial class FormParking
     {
@@ -22,14 +22,13 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonSetTractor = new System.Windows.Forms.Button();
-            this.buttonSetExcavatorTractor = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeTractor = new System.Windows.Forms.PictureBox();
             this.buttonTakeTractor = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelPosition = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.buttonNewTractor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTractor)).BeginInit();
@@ -42,26 +41,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(1329, 753);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonSetTractor
-            // 
-            this.buttonSetTractor.Location = new System.Drawing.Point(1353, 313);
-            this.buttonSetTractor.Name = "buttonSetTractor";
-            this.buttonSetTractor.Size = new System.Drawing.Size(133, 45);
-            this.buttonSetTractor.TabIndex = 1;
-            this.buttonSetTractor.Text = "Set Tractor";
-            this.buttonSetTractor.UseVisualStyleBackColor = true;
-            this.buttonSetTractor.Click += new System.EventHandler(this.buttonSetTractor_Click);
-            // 
-            // buttonSetExcavatorTractor
-            // 
-            this.buttonSetExcavatorTractor.Location = new System.Drawing.Point(1353, 375);
-            this.buttonSetExcavatorTractor.Name = "buttonSetExcavatorTractor";
-            this.buttonSetExcavatorTractor.Size = new System.Drawing.Size(129, 57);
-            this.buttonSetExcavatorTractor.TabIndex = 2;
-            this.buttonSetExcavatorTractor.Text = "Set Excavator Tractor";
-            this.buttonSetExcavatorTractor.UseVisualStyleBackColor = true;
-            this.buttonSetExcavatorTractor.Click += new System.EventHandler(this.buttonSetExcavatorTractor_Click);
             // 
             // groupBox
             // 
@@ -122,15 +101,24 @@
             this.listBoxLevels.TabIndex = 4;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
+            // buttonNewTractor
+            // 
+            this.buttonNewTractor.Location = new System.Drawing.Point(1354, 297);
+            this.buttonNewTractor.Name = "buttonNewTractor";
+            this.buttonNewTractor.Size = new System.Drawing.Size(118, 44);
+            this.buttonNewTractor.TabIndex = 5;
+            this.buttonNewTractor.Text = "New Tractor";
+            this.buttonNewTractor.UseVisualStyleBackColor = true;
+            this.buttonNewTractor.Click += new System.EventHandler(this.buttonNewTractor_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1536, 798);
+            this.Controls.Add(this.buttonNewTractor);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox);
-            this.Controls.Add(this.buttonSetExcavatorTractor);
-            this.Controls.Add(this.buttonSetTractor);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.Text = "FormParking";
@@ -145,13 +133,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonSetTractor;
-        private System.Windows.Forms.Button buttonSetExcavatorTractor;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonTakeTractor;
         private System.Windows.Forms.PictureBox pictureBoxTakeTractor;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Button buttonNewTractor;
     }
 }
