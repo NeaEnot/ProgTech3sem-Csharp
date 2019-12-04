@@ -1,16 +1,9 @@
-﻿namespace Lab1
+﻿namespace Lab2
 {
-    partial class FormET
+    partial class FormTransport
     {
-        /// <summary>
-        /// Обязательная переменная конструктора.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,18 +15,15 @@
 
         #region Код, автоматически созданный конструктором форм Windows
 
-        /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
-        /// </summary>
         private void InitializeComponent()
         {
             this.pictureBoxET = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateET = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonCreateT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxET)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,15 +36,15 @@
             this.pictureBoxET.TabIndex = 0;
             this.pictureBoxET.TabStop = false;
             // 
-            // buttonCreate
+            // buttonCreateET
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(19, 20);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(103, 35);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Create";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateET.Location = new System.Drawing.Point(12, 48);
+            this.buttonCreateET.Name = "buttonCreateET";
+            this.buttonCreateET.Size = new System.Drawing.Size(145, 30);
+            this.buttonCreateET.TabIndex = 1;
+            this.buttonCreateET.Text = "ExcavatorTractor";
+            this.buttonCreateET.UseVisualStyleBackColor = true;
+            this.buttonCreateET.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonLeft
             // 
@@ -100,16 +90,27 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateT
+            // 
+            this.buttonCreateT.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreateT.Name = "buttonCreateT";
+            this.buttonCreateT.Size = new System.Drawing.Size(145, 30);
+            this.buttonCreateT.TabIndex = 6;
+            this.buttonCreateT.Text = "Tractor";
+            this.buttonCreateT.UseVisualStyleBackColor = true;
+            this.buttonCreateT.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 444);
+            this.Controls.Add(this.buttonCreateT);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonCreateET);
             this.Controls.Add(this.pictureBoxET);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -122,11 +123,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxET;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateET;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonCreateT;
     }
 }
 
