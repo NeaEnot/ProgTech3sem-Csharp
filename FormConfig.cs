@@ -86,7 +86,7 @@ namespace Lab
                     tractor = new Tractor(100, 500, Color.White);
                     break;
                 case "Excavator Tractor":
-                    tractor = new ExcavatorTractor(100, 500, Color.White, Color.Black, Color.White, true, false, true, true, true);
+                    tractor = new ExcavatorTractor(100, 500, Color.White, Color.Black, Color.White, true, false, false, true, true);
                     break;
             }
             Draw();
