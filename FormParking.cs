@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab4
+namespace Lab
 {
     public partial class FormParking : Form
     {
         MultiLevelParking parking;
+
+        FormConfig form;
 
         private const int countLevel = 5;
 
@@ -35,45 +37,6 @@ namespace Lab4
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
-            }
-        }
-
-        private void buttonSetTractor_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new Tractor(100, 1000, dialog.Color);
-                    int place = parking[listBoxLevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } Draw();
-                }
-            }
-        }
-
-        private void buttonSetExcavatorTractor_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var car = new ExcavatorTractor(100, 1000, dialog.Color, dialogDop.Color, Color.Red, true, false, true, false, false);
-                        int place = parking[listBoxLevels.SelectedIndex] + car;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
             }
         }
 
@@ -105,6 +68,29 @@ namespace Lab4
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonNewTractor_Click(object sender, EventArgs e)
+        {
+            form = new FormConfig();
+            form.AddEvent(Add);
+            form.Show();
+        }
+
+        private void Add(ITransport tractor)
+        {
+            if (tractor != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + tractor;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Нет свободных мест");
+                }
+            }
         }
     }
 }

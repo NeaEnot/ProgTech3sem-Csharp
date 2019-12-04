@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4
+namespace Lab
 {
     public interface ITransport
     {
         void SetPosition(int x, int y, int width, int height);
         void MoveTransport(Direction direction);
         void Draw(Graphics g);
+        void SetMainColor(Color color);
     }
 }
