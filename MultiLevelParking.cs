@@ -27,7 +27,7 @@ namespace Lab
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -57,7 +57,6 @@ namespace Lab
                     }
                 }
             }
-            return true;
         }
 
         private void WriteToFile(string text, StreamWriter sw)
@@ -65,11 +64,11 @@ namespace Lab
             sw.Write(text);
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             int counter = -1;
@@ -107,8 +106,6 @@ namespace Lab
                     }
                 }
             }
-            
-            return true;
         }
 
         public Parking<ITransport> this[int ind]

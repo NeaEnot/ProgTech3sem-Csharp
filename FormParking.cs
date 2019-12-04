@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace Lab
 {
@@ -16,11 +17,16 @@ namespace Lab
 
         FormConfig form;
 
+        private Logger logger;
+
         private const int countLevel = 5;
 
         public FormParking()
         {
             InitializeComponent();
+
+            logger = LogManager.GetCurrentClassLogger();
+
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             for (int i = 0; i < countLevel; i++)
             {
@@ -46,22 +52,29 @@ namespace Lab
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    try
                     {
+                        var car = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTractor.Width, pictureBoxTakeTractor.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         car.SetPosition(5, 5, pictureBoxTakeTractor.Width, pictureBoxTakeTractor.Height);
                         car.Draw(gr);
                         pictureBoxTakeTractor.Image = bmp;
+
+                        logger.Info("Изъят трактор" + car.ToString() + " с места " + maskedTextBox.Text);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeTractor.Width, pictureBoxTakeTractor.Height);
-                        pictureBoxTakeTractor.Image = bmp;
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Error(ex, "Неизвестная ошибка");
                     }
-                    Draw();
                 }
+                else
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTakeTractor.Width, pictureBoxTakeTractor.Height);
+                    pictureBoxTakeTractor.Image = bmp;
+                }
+                Draw();
             }
         }
 
@@ -81,14 +94,21 @@ namespace Lab
         {
             if (tractor != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevels.SelectedIndex] + tractor;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxLevels.SelectedIndex] + tractor;
+                    logger.Info("Добавлен трактор " + tractor.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Нет свободных мест");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(ex, "Переполнение");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(ex, "Неизвестная ошибка");
                 }
             }
         }
@@ -97,14 +117,16 @@ namespace Lab
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат", 
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    parking.SaveData(saveFileDialog.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(ex, "Неизвестная ошибка при сохранении");
                 }
             }
         }
@@ -113,11 +135,22 @@ namespace Lab
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog.FileName))
+                try
                 {
+                    parking.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else { MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                catch (ParkingOccupiedPlaceException ex)
+                {
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(ex, "Занятое место");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(ex, "Неизвестная ошибка при сохранении");
+                }
                 Draw();
             }
         }

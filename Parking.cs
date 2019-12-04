@@ -31,6 +31,11 @@ namespace Lab
         {
             if (p._places.Count == p._maxCount)
             {
+                throw new ParkingOverflowException();
+            }
+
+            if (p._places.Count == p._maxCount)
+            {
                 return -1;
             }
 
@@ -56,6 +61,7 @@ namespace Lab
                 return car;
             }
             return null;
+            throw new ParkingNotFoundException(index);
         }
 
         public T this[int ind]
@@ -76,6 +82,10 @@ namespace Lab
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, 
                                              ind % 5 * _placeSizeHeight + 15, PictureWidth, 
                                              PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
