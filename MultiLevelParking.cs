@@ -119,5 +119,10 @@ namespace Lab
                 return null;
             }
         }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
     }
 }
