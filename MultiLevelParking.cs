@@ -88,10 +88,6 @@ namespace Lab
                     }
                     parkingStages = new List<Parking<ITransport>>(count);
                 }
-		else
-		{
-			return false;
-		}
 				
                 while (!fr.EndOfStream)
                 {
