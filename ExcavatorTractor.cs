@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab
 {
-    public class ExcavatorTractor:Tractor
+    public class ExcavatorTractor:Tractor, IComparable<ExcavatorTractor>, IEquatable<ExcavatorTractor>
     {
         public Color DopColor;
         public Color FlagColor;
@@ -142,6 +142,95 @@ namespace Lab
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Flag + ";" + 
                     FrontTube + ";" + BackTube + ";" + WheelChock + ";" + FrontLadle;
+        }
+
+        public int CompareTo(ExcavatorTractor other)
+        {
+            var res = (this is Tractor).CompareTo(other is Tractor);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Flag != other.Flag)
+            {
+                return Flag.CompareTo(other.Flag);
+            }
+            if (FrontTube != other.FrontTube)
+            {
+                return FrontTube.CompareTo(other.FrontTube);
+            }
+            if (BackTube != other.BackTube)
+            {
+                return BackTube.CompareTo(other.BackTube);
+            }
+            if (FrontLadle != other.FrontLadle)
+            {
+                return FrontLadle.CompareTo(other.FrontLadle);
+            }
+            if (WheelChock != other.WheelChock)
+            {
+                return WheelChock.CompareTo(other.WheelChock);
+            }
+
+            return 0;
+        }
+
+        public bool Equals(ExcavatorTractor other)
+        {
+            var res = (this as Tractor).Equals(other as Tractor);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Flag != other.Flag)
+            {
+                return false;
+            }
+            if (FrontTube != other.FrontTube)
+            {
+                return false;
+            }
+            if (BackTube != other.BackTube)
+            {
+                return false;
+            }
+            if (FrontLadle != other.FrontLadle)
+            {
+                return false;
+            }
+            if (WheelChock != other.WheelChock)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is ExcavatorTractor tractorObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(tractorObj);
+            }
         }
     }
 }

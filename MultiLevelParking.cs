@@ -91,7 +91,7 @@ namespace Lab
                 while (!fr.EndOfStream)
                 {
                     str = fr.ReadLine();
-            
+           
                     if (str == "Level")
                     {
                         counter++;
@@ -121,6 +121,11 @@ namespace Lab
                 }
                 return null;
             }
+        }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }
