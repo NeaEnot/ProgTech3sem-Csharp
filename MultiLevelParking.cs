@@ -77,7 +77,7 @@ namespace Lab
             using (StreamReader fr = new StreamReader(filename))
             {
                 String str = fr.ReadLine();
-
+              
                 if (str.Contains("CountLeveles"))
                 {
                     int count = Convert.ToInt32(str.Split(':')[1]);
@@ -91,7 +91,7 @@ namespace Lab
                 while (!fr.EndOfStream)
                 {
                     str = fr.ReadLine();
-                    
+            
                     if (str == "Level")
                     {
                         counter++;
