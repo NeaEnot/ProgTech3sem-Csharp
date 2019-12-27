@@ -79,7 +79,7 @@ namespace Lab
             {
                 String str = fr.ReadLine();
 				
-				if (str.Contains("CountLeveles"))
+		if (str.Contains("CountLeveles"))
                 {
                     int count = Convert.ToInt32(str.Split(':')[1]);
                     if (parkingStages != null)
@@ -88,24 +88,15 @@ namespace Lab
                     }
                     parkingStages = new List<Parking<ITransport>>(count);
                 }
-				else
-				{
-					return false;
-				}
+		else
+		{
+			return false;
+		}
 				
                 while (!fr.EndOfStream)
                 {
                     str = fr.ReadLine();
-					
-                    if (str == "Level")
-                    {
-                        int count = Convert.ToInt32(str.Split(':')[1]);
-                        if (parkingStages != null)
-                        {
-                            parkingStages.Clear();
-                        }
-                        parkingStages = new List<Parking<ITransport>>(count);
-                    }
+		
                     if (str == "Level")
                     {
                         counter++;
