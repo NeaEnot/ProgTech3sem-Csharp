@@ -76,19 +76,22 @@ namespace Lab
 
             using (StreamReader fr = new StreamReader(filename))
             {
+                String str = fr.ReadLine();
+
+                if (str.Contains("CountLeveles"))
+                {
+                    int count = Convert.ToInt32(str.Split(':')[1]);
+                    if (parkingStages != null)
+                    {
+                        parkingStages.Clear();
+                    }
+                    parkingStages = new List<Parking<ITransport>>(count);
+                }
+                    
                 while (!fr.EndOfStream)
                 {
-                    String str = fr.ReadLine();
-
-                    if (str.Contains("CountLeveles"))
-                    {
-                        int count = Convert.ToInt32(str.Split(':')[1]);
-                        if (parkingStages != null)
-                        {
-                            parkingStages.Clear();
-                        }
-                        parkingStages = new List<Parking<ITransport>>(count);
-                    }
+                    str = fr.ReadLine();
+                    
                     if (str == "Level")
                     {
                         counter++;
