@@ -27,7 +27,7 @@ namespace Lab
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -57,7 +57,6 @@ namespace Lab
                     }
                 }
             }
-            return true;
         }
 
         private void WriteToFile(string text, StreamWriter sw)
@@ -65,11 +64,11 @@ namespace Lab
             sw.Write(text);
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             int counter = -1;
@@ -78,8 +77,8 @@ namespace Lab
             using (StreamReader fr = new StreamReader(filename))
             {
                 String str = fr.ReadLine();
-				
-		if (str.Contains("CountLeveles"))
+              
+                if (str.Contains("CountLeveles"))
                 {
                     int count = Convert.ToInt32(str.Split(':')[1]);
                     if (parkingStages != null)
@@ -88,11 +87,11 @@ namespace Lab
                     }
                     parkingStages = new List<Parking<ITransport>>(count);
                 }
-				
+                    
                 while (!fr.EndOfStream)
                 {
                     str = fr.ReadLine();
-		
+            
                     if (str == "Level")
                     {
                         counter++;
@@ -110,8 +109,6 @@ namespace Lab
                     }
                 }
             }
-            
-            return true;
         }
 
         public Parking<ITransport> this[int ind]
