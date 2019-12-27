@@ -76,8 +76,6 @@ namespace Lab
 
             using (StreamReader fr = new StreamReader(filename))
             {
-                while (!fr.EndOfStream)
-                {
                     String str = fr.ReadLine();
 
                     if (str.Contains("CountLeveles"))
@@ -89,6 +87,11 @@ namespace Lab
                         }
                         parkingStages = new List<Parking<ITransport>>(count);
                     }
+                
+                while (!fr.EndOfStream)
+                {
+                    str = fr.ReadLine();
+                    
                     if (str == "Level")
                     {
                         counter++;
