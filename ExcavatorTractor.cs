@@ -72,6 +72,23 @@ namespace Lab
             FrontLadle = ladle;
         }
 
+        public ExcavatorTractor(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 9)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Flag = Convert.ToBoolean(strs[4]);
+                FrontTube = Convert.ToBoolean(strs[5]);
+                BackTube = Convert.ToBoolean(strs[6]);
+                WheelChock = Convert.ToBoolean(strs[7]);
+                FrontLadle = Convert.ToBoolean(strs[8]);
+            }
+        }
+
         public override void Draw(Graphics g)
         {
             Pen penDop = new Pen(DopColor);
@@ -119,6 +136,12 @@ namespace Lab
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Flag + ";" + 
+                    FrontTube + ";" + BackTube + ";" + WheelChock + ";" + FrontLadle;
         }
     }
 }
